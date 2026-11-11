@@ -14,6 +14,8 @@ This archive accompanies the third revision of *A longitudinal electronic health
 - `outputs/selected_lab_qc.csv` and `outputs/hemoglobin_interpretation_summary.json`: results for the analytes discussed in the manuscript.
 - `outputs/figure1_source.csv` and `outputs/figure2_source.csv`: inputs for Figures 1 and 2.
 - `reference_interval_standardization.py`: the reference-interval conversion and its original-scale expression, with an illustrative numerical example.
+- `validate_laboratory_relationships.py`: ten blood-count and protein consistency checks using the released CSVs and a separately supplied reference-limit parameter file.
+- `laboratory_validation_rules.json`: 21 analyte groups and 29 released labels, record-selection rules, and the ten check definitions, tolerances and validation units.
 - `outputs/omix_file_inventory.csv`: the current OMIX entries and file sizes.
 - `DATA_USE_AGREEMENT.md` and `METADATA_NOTES.md`: access conditions and variable definitions.
 
@@ -37,7 +39,15 @@ Laboratory values use reference-interval linear standardization:
 
 Here `x` is the original measurement, `z` is the released dimensionless score, and `L` and `U` are the applicable lower and upper reference limits (`U > L`). The measurement and both limits use the same original unit. Select the analyte-specific limits, using sex-specific limits where applicable, subtract the lower limit from the measurement, and divide by the reference-interval width. Zero denotes the lower limit and one the upper limit. Negative scores lie below the lower limit; scores above one exceed the upper limit. The corresponding original-scale expression is `x = L + z(U − L)`.
 
-For an illustrative interval with `L = 10` and `U = 20`, measurements of 5, 10, 15, 20 and 25 yield scores of −0.5, 0, 0.5, 1 and 1.5, respectively. These values illustrate the calculation and are not patient measurements or clinical reference limits. Run `python reference_interval_standardization.py` to reproduce this example. The public materials provide the mathematical definition, illustrative implementation and aggregate validation results. Numerical reference limits, tolerances and the clinical-scale validation script for the reported consistency checks are supplied confidentially to the editor.
+For an illustrative interval with `L = 10` and `U = 20`, measurements of 5, 10, 15, 20 and 25 yield scores of −0.5, 0, 0.5, 1 and 1.5, respectively. These values illustrate the calculation and are not patient measurements or clinical reference limits. Run `python reference_interval_standardization.py` to reproduce this example. The public materials provide the mathematical definition, illustrative implementation and clinical-scale validation script. `outputs/lab_relationship_validation.csv` reports each consistency check's sample size, agreement count, absolute differences, tolerance and validation unit.
+
+The numerical reference limits used for these checks are supplied to reviewers in `CWC_EHR_Laboratory_Validation_Reviewer.zip`. After extracting that attachment, reproduce the ten checks with:
+
+```sh
+python validate_laboratory_relationships.py --release-dir /approved/path/to/release_v1 --parameters /path/to/reviewer_attachment/validation_parameters.json --output-dir clinical_validation
+```
+
+The script writes `laboratory_consistency_results.csv` and `lab_field_validation.csv`. The first contains the same ten results as the public `outputs/lab_relationship_validation.csv`; the second gives the contributing counts by released label. The analyte labels supplied with the confidential parameters match the mapping in the public `laboratory_validation_rules.json`.
 
 ## Repository and review access
 
@@ -47,4 +57,4 @@ Controlled access implements Chinese requirements for authorized use, electronic
 
 ## Data Availability
 
-CWC EHR version 1.0.0 is released through the Open Archive for Miscellaneous Data (OMIX013035, BioProject PRJCA051263, https://ngdc.cncb.ac.cn/omix/release/OMIX013035) under controlled access. To obtain the five patient-level CSV files, users register with verifiable identity information, submit an OMIX access request and accept the CWC EHR Data Use Agreement (DUA). The data providers will approve access for every user who completes these steps. The same requirements apply to all applicants, irrespective of research question, nationality, institutional affiliation or type, and commercial or non-commercial status. Submitter authorization confirms completion of these uniform requirements and enables download. The DUA prohibits participant identification, linkage for re-identification and redistribution of patient-level data. Controlled access protects the sensitive longitudinal information retained after de-identification.
+CWC EHR version 1.0.0 is released through the Open Archive for Miscellaneous Data (OMIX013035, BioProject PRJCA051263, https://ngdc.cncb.ac.cn/omix/release/OMIX013035) under controlled access. To obtain the five patient-level CSV files, users register with verifiable identity information, submit an OMIX access request and accept the CWC EHR Data Use Agreement (DUA). The data providers will approve access for every user who completes these steps. The same requirements apply to all applicants, irrespective of research question, nationality, institutional affiliation or type, and commercial or non-commercial status. Submitter authorization confirms completion of these uniform requirements and enables download. The DUA prohibits participant identification, linkage for re-identification and redistribution of patient-level data.

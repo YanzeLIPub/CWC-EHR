@@ -1,0 +1,193 @@
+{
+  "analyte_labels": {
+    "Hb": [
+      "★血红蛋白",
+      "血红蛋白"
+    ],
+    "Hct": [
+      "★红细胞压积",
+      "红细胞压积"
+    ],
+    "RBC": [
+      "★红细胞计数",
+      "红细胞计数"
+    ],
+    "MCV": [
+      "红细胞平均体积"
+    ],
+    "MCH": [
+      "平均血红蛋白量"
+    ],
+    "MCHC": [
+      "平均血红蛋白浓度"
+    ],
+    "WBC": [
+      "★白细胞计数",
+      "白细胞计数"
+    ],
+    "NEUT": [
+      "中性粒细胞计数"
+    ],
+    "NEUTpct": [
+      "中性粒细胞百分比"
+    ],
+    "LYMPH": [
+      "淋巴细胞计数"
+    ],
+    "LYMPHpct": [
+      "淋巴细胞百分比"
+    ],
+    "MONO": [
+      "单核细胞计数"
+    ],
+    "MONOpct": [
+      "单核细胞百分比"
+    ],
+    "EOS": [
+      "嗜酸性粒细胞计数"
+    ],
+    "EOSpct": [
+      "嗜酸性粒细胞百分比"
+    ],
+    "BASO": [
+      "嗜碱性粒细胞计数"
+    ],
+    "BASOpct": [
+      "嗜碱性粒细胞百分比"
+    ],
+    "TP": [
+      "★总蛋白",
+      "总蛋白",
+      "*总蛋白"
+    ],
+    "ALB": [
+      "★白蛋白",
+      "白蛋白",
+      "*白蛋白"
+    ],
+    "GLOB": [
+      "球蛋白"
+    ],
+    "AGR": [
+      "白球比"
+    ]
+  },
+  "sex_codes": {
+    "1": "Male",
+    "2": "Female"
+  },
+  "record_selection": "All records with nonempty values for every required analyte; combine released labels for each analyte by their first nonempty value in the listed order.",
+  "agreement_rule": "Absolute difference less than or equal to the tolerance.",
+  "checks": [
+    {
+      "relationship": "Hb_Hct_MCHC",
+      "difference": "Hb - Hct * MCHC",
+      "required_analytes": [
+        "Hb",
+        "Hct",
+        "MCHC"
+      ],
+      "tolerance": 1.0,
+      "validation_unit": "g/L"
+    },
+    {
+      "relationship": "Hct_RBC_MCV",
+      "difference": "Hct - RBC * MCV / 1000",
+      "required_analytes": [
+        "Hct",
+        "RBC",
+        "MCV"
+      ],
+      "tolerance": 0.005,
+      "validation_unit": "L/L"
+    },
+    {
+      "relationship": "MCH_Hb_RBC",
+      "difference": "MCH - Hb / RBC",
+      "required_analytes": [
+        "MCH",
+        "Hb",
+        "RBC"
+      ],
+      "tolerance": 0.6,
+      "validation_unit": "pg"
+    },
+    {
+      "relationship": "TP_ALB_GLOB",
+      "difference": "TP - ALB - GLOB",
+      "required_analytes": [
+        "TP",
+        "ALB",
+        "GLOB"
+      ],
+      "tolerance": 0.2,
+      "validation_unit": "g/L"
+    },
+    {
+      "relationship": "AGR_ALB_GLOB",
+      "difference": "AGR - ALB / GLOB",
+      "required_analytes": [
+        "AGR",
+        "ALB",
+        "GLOB"
+      ],
+      "tolerance": 0.02,
+      "validation_unit": "ratio"
+    },
+    {
+      "relationship": "NEUT_WBC_pct",
+      "difference": "NEUT - WBC * NEUTpct / 100",
+      "required_analytes": [
+        "NEUT",
+        "WBC",
+        "NEUTpct"
+      ],
+      "tolerance": 0.02,
+      "validation_unit": "10^9/L"
+    },
+    {
+      "relationship": "LYMPH_WBC_pct",
+      "difference": "LYMPH - WBC * LYMPHpct / 100",
+      "required_analytes": [
+        "LYMPH",
+        "WBC",
+        "LYMPHpct"
+      ],
+      "tolerance": 0.02,
+      "validation_unit": "10^9/L"
+    },
+    {
+      "relationship": "MONO_WBC_pct",
+      "difference": "MONO - WBC * MONOpct / 100",
+      "required_analytes": [
+        "MONO",
+        "WBC",
+        "MONOpct"
+      ],
+      "tolerance": 0.02,
+      "validation_unit": "10^9/L"
+    },
+    {
+      "relationship": "EOS_WBC_pct",
+      "difference": "EOS - WBC * EOSpct / 100",
+      "required_analytes": [
+        "EOS",
+        "WBC",
+        "EOSpct"
+      ],
+      "tolerance": 0.02,
+      "validation_unit": "10^9/L"
+    },
+    {
+      "relationship": "BASO_WBC_pct",
+      "difference": "BASO - WBC * BASOpct / 100",
+      "required_analytes": [
+        "BASO",
+        "WBC",
+        "BASOpct"
+      ],
+      "tolerance": 0.02,
+      "validation_unit": "10^9/L"
+    }
+  ]
+}
