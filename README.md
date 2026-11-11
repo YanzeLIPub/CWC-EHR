@@ -13,7 +13,7 @@ This archive accompanies the third revision of *A longitudinal electronic health
 - `outputs/lab_relationship_validation.csv`, `outputs/lab_field_validation.csv` and `outputs/laboratory_validation_summary.json`: completed blood-count and protein consistency checks.
 - `outputs/selected_lab_qc.csv` and `outputs/hemoglobin_interpretation_summary.json`: results for the analytes discussed in the manuscript.
 - `outputs/figure1_source.csv` and `outputs/figure2_source.csv`: inputs for Figures 1 and 2.
-- `outputs/reidentification_risk_audit.json`: aggregate assessment of the retained indirect identifiers.
+- `reference_interval_standardization.py`: the reference-interval conversion and its original-scale expression, with an illustrative numerical example.
 - `outputs/omix_file_inventory.csv`: the current OMIX entries and file sizes.
 - `DATA_USE_AGREEMENT.md` and `METADATA_NOTES.md`: access conditions and variable definitions.
 
@@ -31,11 +31,19 @@ python finalize_release_metadata.py --release-dir /approved/path/to/release_v1 -
 
 The figure command uses the supplied aggregates. The remaining commands use approved access to the released CSVs. To repeat the source-cell comparison, add `--restricted-source /approved/path/to/source.csv` to the validation command. Empty CSV fields represent missing values. Completeness uses all 530,450 laboratory rows as its denominator; quantiles use linear interpolation among finite values. Figure 1 uses shifted admission year. Figure 2 groups the 771 fields by completeness.
 
-Laboratory values use reference-interval linear standardization. Zero and one correspond to the lower and upper reference limits, respectively. Negative values are below the lower limit. The public documentation provides the method and aggregate validation results; numerical conversion parameters and the corresponding clinical-scale validation script are supplied confidentially to the editor.
+Laboratory values use reference-interval linear standardization:
+
+`z = (x − L)/(U − L)`
+
+Here `x` is the original measurement, `z` is the released dimensionless score, and `L` and `U` are the applicable lower and upper reference limits (`U > L`). The measurement and both limits use the same original unit. Select the analyte-specific limits, using sex-specific limits where applicable, subtract the lower limit from the measurement, and divide by the reference-interval width. Zero denotes the lower limit and one the upper limit. Negative scores lie below the lower limit; scores above one exceed the upper limit. The corresponding original-scale expression is `x = L + z(U − L)`.
+
+For an illustrative interval with `L = 10` and `U = 20`, measurements of 5, 10, 15, 20 and 25 yield scores of −0.5, 0, 0.5, 1 and 1.5, respectively. These values illustrate the calculation and are not patient measurements or clinical reference limits. Run `python reference_interval_standardization.py` to reproduce this example. The public materials provide the mathematical definition, illustrative implementation and aggregate validation results. Numerical reference limits, tolerances and the clinical-scale validation script for the reported consistency checks are supplied confidentially to the editor.
 
 ## Repository and review access
 
 The materials are available at https://github.com/YanzeLIPub/CWC-EHR, with the dated version at https://github.com/YanzeLIPub/CWC-EHR/tree/round3-2026-11-11 and a ZIP download at https://github.com/YanzeLIPub/CWC-EHR/archive/refs/heads/round3-2026-11-11.zip. Public reproduction materials can be downloaded without registration. The five released CSVs and anonymous download instructions are supplied separately to the journal for peer review.
+
+Controlled access implements Chinese requirements for authorized use, electronic real-name verification and data access control for health and medical big data, as set out in Articles 22–23 of the [National Health Commission management measures](https://www.nhc.gov.cn/guihuaxxs/c100133/201809/c5e3e58313a24fdeb26d3dc07003d56e.shtml). OMIX registration and acceptance of the uniform DUA implement these requirements.
 
 ## Data Availability
 
