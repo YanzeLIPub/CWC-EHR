@@ -109,7 +109,7 @@
   "patient_pseudonymization": {
     "all_ids_match_nonsequential_hex_format": true,
     "collisions": 0,
-    "method": "HMAC-SHA-256 with domain separation",
+    "method": "Consistent patient-level pseudonymization",
     "patients": 38509,
     "secret_written_to_release": false,
     "source_to_release_mapping_written": false,
