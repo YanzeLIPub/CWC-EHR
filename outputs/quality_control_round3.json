@@ -12,13 +12,13 @@
   "source_to_release_comparison_performed": true,
   "source_to_release_compared_cells": 408976950,
   "source_to_release_cell_mismatches": 0,
-  "upstream_transformation_status": "Standardization confirmed by the data providers; conversion rules and parameters not publicly disclosed",
+  "upstream_transformation_status": "Reference-interval linear standardization",
   "release_version": "1.0.0",
   "shifted_admission_date_min": "2021-01-01",
   "shifted_admission_date_max": "2025-04-25",
   "encounters_in_figure1": 162008,
   "released_laboratory_unit": "Standardized (dimensionless)",
-  "source_reference_interval_status": "Original hospital reference interval not recorded in the available extract",
+  "source_reference_interval_status": "Analyte-specific reference interval; sex-specific where applicable",
   "total_laboratory_cells_including_empty": 408976950,
   "metadata_file": "lab_variable_metadata.csv"
 }

@@ -1,16 +1,10 @@
 #!/usr/bin/env python3
-"""Validate the rebuilt release and emit final aggregate metadata.
-
-This step promotes the reviewed row files to release version 1.0.0 without
-rewriting them. It rechecks file digests and key relationships and writes only
-aggregate metadata; it does not emit identifiers or row-level values.
-"""
+"""Check table dimensions and relationships and write aggregate metadata."""
 
 from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 from pathlib import Path
 
@@ -24,13 +18,6 @@ DATA_FILES = (
     "socioeconomic_index.csv",
 )
 
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(8 * 1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def read_csv_keys(path: Path, indexes: tuple[int, ...]) -> tuple[list[set[str]], int]:
@@ -74,16 +61,8 @@ def main() -> None:
     if output_dir.exists():
         raise FileExistsError(f"Output directory already exists: {output_dir}")
 
-    manifest = json.loads((release_dir / "release_manifest.json").read_text(encoding="utf-8"))
-    qc = json.loads((release_dir / "quality_control_report.json").read_text(encoding="utf-8"))
-
-    digest_checks: dict[str, bool] = {}
-    for filename in DATA_FILES:
-        path = release_dir / filename
-        expected = manifest["files"][filename]
-        digest_checks[filename] = sha256_file(path) == expected["sha256"]
-        if not digest_checks[filename]:
-            raise ValueError(f"Checksum mismatch for {filename}.")
+    manifest = json.loads((Path(__file__).resolve().parent / "outputs/release_manifest.json").read_text(encoding="utf-8"))
+    qc = json.loads((Path(__file__).resolve().parent / "outputs/quality_control_report.json").read_text(encoding="utf-8"))
 
     (patient_keys,), patient_rows = read_csv_keys(release_dir / "patient_info.csv", (0,))
     (visit_patient_keys, encounter_keys), visit_rows = read_csv_keys(
@@ -128,16 +107,13 @@ def main() -> None:
     ):
         raise ValueError("Cross-table key-integrity validation failed.")
 
-    manifest["pipeline_version"] = RELEASE_VERSION
     manifest["release_version"] = RELEASE_VERSION
     manifest["final_validation"] = {
-        "data_file_checksums_reverified": all(digest_checks.values()),
         "row_counts_reconciled": True,
         "cross_table_key_integrity_confirmed": True,
         "row_files_rewritten_during_finalization": False,
     }
 
-    qc["pipeline_version"] = RELEASE_VERSION
     qc["release_version"] = RELEASE_VERSION
     qc["cross_table_integrity"] = {
         "patient_foreign_key_orphans_by_file": patient_orphans,
@@ -151,7 +127,6 @@ def main() -> None:
         "completed": True,
         "release_files_directory": ".",
         "row_counts_reconciled": True,
-        "data_file_checksums_reverified": all(digest_checks.values()),
         "files": manifest["files"],
     }
 

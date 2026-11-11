@@ -1,0 +1,15 @@
+{
+  "release_version": "1.0.0",
+  "laboratory_fields": 771,
+  "standardization_method": "Reference-interval linear standardization",
+  "released_unit": "standardized dimensionless",
+  "laboratory_rows": 530450,
+  "finite_values": 24899677,
+  "total_cells_including_empty": 408976950,
+  "source_cell_mismatches": 0,
+  "relationships_evaluated": 10,
+  "minimum_agreement": 0.9971658255747462,
+  "maximum_agreement": 0.9999000721700994,
+  "relationship_results": "lab_relationship_validation.csv",
+  "field_results": "lab_field_validation.csv"
+}

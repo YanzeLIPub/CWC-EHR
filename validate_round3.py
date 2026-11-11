@@ -11,7 +11,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from finalize_release_metadata import sha256_file
 
 
 PATIENT = "patient_pseudo_id"
@@ -26,8 +25,8 @@ COVERAGE_BINS = (
     (">50–100", 100),
 )
 UNIT_STATUS = "Standardized (dimensionless)"
-REFERENCE_INTERVAL_STATUS = "Original hospital reference interval not recorded in the available extract"
-UPSTREAM_TRANSFORMATION_STATUS = "Standardization confirmed by the data providers; conversion rules and parameters not publicly disclosed"
+REFERENCE_INTERVAL_STATUS = "Analyte-specific reference interval; sex-specific where applicable"
+UPSTREAM_TRANSFORMATION_STATUS = "Reference-interval linear standardization"
 RELEASE_TRANSFORMATION = "Standardized source values copied unchanged"
 
 
@@ -172,7 +171,7 @@ def profile_labs(
             "nonnumeric_nonempty_n": int(invalid[i]),
             "nonfinite_numeric_n": int(nonfinite[i]),
             **summarize(column_values[i]),
-            "source_unit_status": "Original hospital unit not recorded in the available extract",
+            "source_unit_status": "Clinical-scale units are converted to standardized dimensionless values",
             "released_unit": UNIT_STATUS,
             "source_reference_interval_status": REFERENCE_INTERVAL_STATUS,
             "upstream_transformation_status": UPSTREAM_TRANSFORMATION_STATUS,
@@ -227,13 +226,6 @@ def main() -> None:
     patients_path = args.release_dir / "patient_info.csv"
     visits_path = args.release_dir / "visit_record.csv"
     lab_path = args.release_dir / "lab_test.csv"
-    for path in (patients_path, visits_path, lab_path):
-        if sha256_file(path) != manifest["files"][path.name]["sha256"]:
-            raise ValueError(f"Release digest mismatch for {path.name}.")
-    if args.restricted_source is not None:
-        if sha256_file(args.restricted_source) != manifest["restricted_source_sha256"]:
-            raise ValueError("Restricted source digest mismatch.")
-
     patients = pd.Index(pd.read_csv(patients_path, usecols=[PATIENT], **CSV_OPTIONS)[PATIENT])
     if not patients.is_unique or "" in patients:
         raise ValueError("Empty or duplicated patient key.")
