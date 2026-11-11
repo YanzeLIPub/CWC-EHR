@@ -43,7 +43,7 @@ python plot_round3.py --analysis-dir regenerated --output-dir figures
 
 To regenerate both figures with only the supplied aggregate inputs, run `python plot_round3.py --analysis-dir outputs --output-dir figures_from_aggregates`.
 
-Laboratory results use standardized, dimensionless units, as confirmed by the data providers. The public scripts reproduce validation on the released scale. The aggregate hemoglobin summary records a data-supported inference from internal consistency checks. Conversion rules, parameters, and reconstruction scripts are retained internally to limit reconstruction of original clinical measurements; they are not part of this public archive.
+Laboratory results use standardized, dimensionless units, as confirmed by the data providers. The public scripts reproduce validation on the released scale. The extended assessment covers all 771 fields. Reference-interval linear models have support for 27 well-observed fields and consistency for two sparse variants; 269 fields are constant. Field-level conclusions and aggregate model comparisons are supplied in outputs/lab_transformation_assessment.csv and related files. Chinese eligibility terms and ICD-10 use are confirmed by SCH through the authors. Numerical conversion parameters and reconstruction scripts are retained internally to limit reconstruction of original clinical measurements; they are not part of this public archive.
 
 ```sh
 python finalize_release_metadata.py --release-dir /approved/path/to/release_v1 --output-dir rechecked_metadata
@@ -86,3 +86,5 @@ The expanded round-three reproducibility materials are publicly deposited at [ht
 ## Data Availability
 
 CWC EHR version 1.0.0 is released through the Open Archive for Miscellaneous Data (OMIX013035, BioProject PRJCA051263, https://ngdc.cncb.ac.cn/omix/release/OMIX013035) under controlled access. To obtain the five patient-level CSV files, users register with verifiable identity information, submit an OMIX access request and accept the CWC EHR Data Use Agreement (DUA). The data providers will approve access for every user who completes these steps. The same requirements apply to all applicants, irrespective of research question, nationality, institutional affiliation or type, and commercial or non-commercial status. Submitter authorization confirms completion of these uniform requirements and enables download. The DUA prohibits participant identification, linkage for re-identification and redistribution of patient-level data. Controlled access protects the sensitive longitudinal information retained after de-identification.
+
+The new aggregate evidence files are listed and explained in METADATA_NOTES.md and PROVENANCE.md. Run `python profile_value_diversity.py --release-dir /approved/path/to/release_v1 --output-dir regenerated_diversity` to reproduce distinct-value and constant-field counts without reconstructing clinical measurements.

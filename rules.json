@@ -1,6 +1,6 @@
 {
   "upstream_cardiovascular_eligibility": {
-    "basis": "Clinical eligibility criteria confirmed by the cohort builders",
+    "basis": "SCH confirmation relayed by the authors on 11 November 2026: categories, ICD-10 use and Chinese terms",
     "sampling_frame": "Adults aged at least 18 years receiving cancer care at the study hospital",
     "category_labels_english": [
       "coronary heart disease",
@@ -30,8 +30,18 @@
     "heart_failure_is_separate_qualifying_condition": true,
     "operational_dictionary": "outputs/eligibility_rule_dictionary.csv",
     "source_query_recovered": false,
-    "upstream_icd10_use": "Not established from available material",
-    "upstream_synonym_field_time_and_occurrence_specification": "Not available; do not substitute descriptive-analysis patterns"
+    "upstream_icd10_use": "Confirmed by SCH through the authors; itemized code list not retained in the extract",
+    "confirmed_chinese_term_patterns": {
+      "coronary heart disease": "冠心病|冠状动脉粥样硬化性心脏病|心肌梗死|心绞痛",
+      "hypertension": "高血压",
+      "heart failure": "心力衰竭|心衰",
+      "arrhythmia": "心律失常|心房颤动|房颤|心房扑动|房扑|心动过缓|心动过速|早搏",
+      "valvular heart disease": "心脏瓣膜病|二尖瓣(?:狭窄|关闭不全)|主动脉瓣(?:狭窄|关闭不全)|三尖瓣(?:狭窄|关闭不全)",
+      "cardiomyopathy": "心肌病",
+      "congenital heart disease": "先天性心脏病|房间隔缺损|室间隔缺损|动脉导管未闭",
+      "vascular disease": "外周动脉疾病|外周血管疾病|主动脉瘤|主动脉夹层|深静脉血栓|肺栓塞"
+    },
+    "query_implementation_scope": "Executable query, exact hospital field, lookback and minimum-record threshold are not present in the extract; term confirmation does not supply those implementation details."
   },
   "selected_laboratory_label_variants": {
     "High-sensitivity troponin I": [
@@ -102,5 +112,10 @@
     "standardization_stage": "Before extraction, confirmed by the data providers",
     "release_processing": "Standardized source values copied unchanged",
     "conversion_disclosure": "Rules and parameters not publicly disclosed to limit reconstruction of original measurements"
+  },
+  "laboratory_transformation_assessment": {
+    "field_level_file": "outputs/lab_transformation_assessment.csv",
+    "aggregate_comparison": "outputs/lab_model_comparison_aggregate.csv",
+    "scope": "A compatible validation model is not independent confirmation of the original implementation. Fixed candidate intervals came from published standards; numerical parameters and inverse scripts are confidential."
   }
 }

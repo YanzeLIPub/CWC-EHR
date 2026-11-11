@@ -1,0 +1,24 @@
+{
+  "laboratory_fields": 771,
+  "hemoglobin_label_fields": 2,
+  "additional_fields_assessed": 769,
+  "reference_interval_model_supported_fields": 29,
+  "well_observed_supported_fields": 27,
+  "sparse_supported_label_variants": [
+    "*总蛋白",
+    "*白蛋白"
+  ],
+  "constant_fields": 269,
+  "assessment_counts": {
+    "Affine-scale-compatible spacing; reference origin not identified": 273,
+    "Not identifiable from a constant released field": 269,
+    "Standardization confirmed; specific method remains undetermined": 200,
+    "Reference-interval linear model supported by internal consistency": 29
+  },
+  "heldout_patients": 7702,
+  "training_patients": 30807,
+  "partition": "Every fifth row of patient_info.csv is held out; all records from a patient remain in one partition. Exploratory internal validation, not external validation.",
+  "evidence_scope": "A compatible validation model is not independent confirmation of the original implementation. Fixed candidate intervals came from published standards; numerical parameters and inverse scripts are confidential.",
+  "midpoint_sd_comparator": "Reference-midpoint SD under an explicit normal-reference assumption; detailed parameters are confidential. This is not a test of every possible z-score fitted elsewhere.",
+  "mch_rounding": "The tested MCH tolerance accommodates different rounding precision across source label groups; all held-out rows remain in the denominator."
+}
