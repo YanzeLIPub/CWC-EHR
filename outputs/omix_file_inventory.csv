@@ -1,0 +1,6 @@
+﻿file_id,filename,omix_displayed_size,archive_status,local_size_bytes,inventory_verified_date
+OMIX013035-07,diagnosis.csv,88.8 MB,HTTP Archived,93137096,2026-11-10
+OMIX013035-08,visit_record.csv,51.0 MB,HTTP Archived,53492874,2026-11-10
+OMIX013035-09,patient_info.csv,2.6 MB,HTTP Archived,2772711,2026-11-10
+OMIX013035-10,socioeconomic_index.csv,92.6 MB,HTTP Archived,97092061,2026-11-10
+OMIX013035-11,lab_test.csv,832.87 MB,FTP Archived,873330189,2026-11-10

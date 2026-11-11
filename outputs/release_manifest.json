@@ -1,0 +1,46 @@
+{
+  "files": {
+    "diagnosis.csv": {
+      "columns": 4,
+      "rows_excluding_header": 536819,
+      "sha256": "1b3c43e8e51d65a15f545f5bbcad4cea94702bba896dffd1e38aee0d270761cb",
+      "size_bytes": 93137096
+    },
+    "lab_test.csv": {
+      "columns": 775,
+      "rows_excluding_header": 530450,
+      "sha256": "b3795af416fab9aa823f23170a5c6d8380382e7b96e0a8dc64090d68dbf1c0f2",
+      "size_bytes": 873330189
+    },
+    "patient_info.csv": {
+      "columns": 3,
+      "rows_excluding_header": 38509,
+      "sha256": "6354ff667b40de286746f9d4668be3a864905f2339fcdc61361fb6d1518ead14",
+      "size_bytes": 2772711
+    },
+    "socioeconomic_index.csv": {
+      "columns": 8,
+      "rows_excluding_header": 530450,
+      "sha256": "9cff672ca440df137dfe3812ae4e6f90b6d1a86e007d8e5ed77b7a62395188be",
+      "size_bytes": 97092061
+    },
+    "visit_record.csv": {
+      "columns": 9,
+      "rows_excluding_header": 162008,
+      "sha256": "a9e2cf41e8f8d08521fc9669ca2a26d248b078e22e261396f49a322fb263119b",
+      "size_bytes": 53492874
+    }
+  },
+  "final_validation": {
+    "cross_table_key_integrity_confirmed": true,
+    "data_file_checksums_reverified": true,
+    "row_counts_reconciled": true,
+    "row_files_rewritten_during_finalization": false
+  },
+  "mapping_table_included": false,
+  "missing_value_convention": "empty CSV field",
+  "pipeline_version": "1.0.0",
+  "release_version": "1.0.0",
+  "restricted_source_sha256": "82d93cf0e9410544d6eba75b818464dfc4cd9dceba53d4b430a86a74b9db8f87",
+  "secret_included": false
+}

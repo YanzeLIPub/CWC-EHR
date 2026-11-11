@@ -1,0 +1,203 @@
+{
+  "cohort_provenance": {
+    "author_confirmed_upstream_rule": "Adults aged at least 18 years receiving cancer care with at least one of coronary heart disease, hypertension, heart failure, arrhythmia, valvular heart disease, cardiomyopathy, congenital heart disease, or vascular disease; OR across the eight cardiovascular categories and AND with the adult oncology sampling frame. Other coexisting diseases were permitted. Heart failure was a separate qualifying condition.",
+    "author_confirmed_upstream_pass_count": 38509,
+    "cohort_reselected_from_released_diagnosis_text": false,
+    "upstream_historical_diagnosis_selection_records_in_current_extract": false,
+    "explicit_eligibility_fields_found_in_current_source_header": [],
+    "nonmissing_rows_by_explicit_eligibility_field": {},
+    "pipeline_retains_the_supplied_cohort_without_reclassification": true,
+    "operational_dictionary": "eligibility_rule_dictionary.csv",
+    "original_query_specification_available": false
+  },
+  "cross_table_integrity": {
+    "encounter_foreign_key_orphans_by_file": {
+      "diagnosis.csv": 0,
+      "lab_test.csv": 0
+    },
+    "laboratory_record_foreign_key_orphans_by_file": {
+      "socioeconomic_index.csv": 0
+    },
+    "patient_foreign_key_orphans_by_file": {
+      "diagnosis.csv": 0,
+      "lab_test.csv": 0,
+      "socioeconomic_index.csv": 0,
+      "visit_record.csv": 0
+    },
+    "total_encounter_foreign_key_orphans": 0,
+    "total_laboratory_record_foreign_key_orphans": 0,
+    "total_patient_foreign_key_orphans": 0
+  },
+  "date_shifting": {
+    "all_offsets_within_inclusive_bounds": true,
+    "encounter_interval_mismatches": 0,
+    "maximum_offset_days": 30,
+    "method": "one deterministic HMAC-derived offset per patient",
+    "minimum_offset_days": -30,
+    "raw_admission_date_range": {
+      "maximum": "2025-03-26",
+      "minimum": "2021-01-25"
+    },
+    "raw_discharge_date_range": {
+      "maximum": "2025-03-27",
+      "minimum": "2021-01-28"
+    },
+    "raw_examination_date_range": {
+      "maximum": "2025-03-26",
+      "minimum": "2019-01-01"
+    },
+    "shifted_admission_date_range": {
+      "maximum": "2025-04-25",
+      "minimum": "2021-01-01"
+    },
+    "shifted_discharge_date_range": {
+      "maximum": "2025-04-26",
+      "minimum": "2021-01-05"
+    },
+    "shifted_examination_date_range": {
+      "maximum": "2025-04-25",
+      "minimum": "2018-12-03"
+    },
+    "unique_offsets_observed": 61
+  },
+  "diagnosis": {
+    "icd10_mapping_performed": false,
+    "input_nonmissing_records_by_source": {
+      "discharge_primary": 530450,
+      "outpatient_or_emergency": 530450,
+      "pathology": 152738,
+      "previous_diagnosis": 530450
+    },
+    "input_nonmissing_records_total": 1744088,
+    "source_fields": [
+      "outpatient_or_emergency",
+      "discharge_primary",
+      "pathology",
+      "previous_diagnosis"
+    ],
+    "technical_duplicates_removed": 1207269,
+    "unique_records_after_whitespace_only_deduplication": 536819
+  },
+  "free_text_direct_identifier_scan": {
+    "exact_source_address_matches": 0,
+    "exact_source_identifier_matches": 0,
+    "unique_diagnosis_or_procedure_values_scanned": 4401,
+    "values_with_direct_identifier_labels": 0,
+    "values_with_mobile_phone_pattern": 0,
+    "values_with_national_id_pattern": 0
+  },
+  "laboratory": {
+    "all_missing_columns_removed": 137,
+    "missing_value_imputation_performed": false,
+    "non_lab_fields_in_value_block": 0,
+    "released_value_columns_expected": 771,
+    "rows_expected": 530450,
+    "source_candidate_value_columns": 908,
+    "unit_assignment_performed": false,
+    "released_unit": "Standardized (dimensionless)",
+    "upstream_transformation_status": "Standardization confirmed by the data providers; conversion rules and parameters not publicly disclosed",
+    "release_transformation": "Standardized source values copied unchanged",
+    "original_source_unit_status": "Original hospital units not recorded in the available extract"
+  },
+  "patient_pseudonymization": {
+    "all_ids_match_nonsequential_hex_format": true,
+    "collisions": 0,
+    "method": "HMAC-SHA-256 with domain separation",
+    "patients": 38509,
+    "secret_written_to_release": false,
+    "source_to_release_mapping_written": false,
+    "unique_release_patient_ids": 38509
+  },
+  "pipeline_version": "1.0.0",
+  "release_build": {
+    "completed": true,
+    "data_file_checksums_reverified": true,
+    "files": {
+      "diagnosis.csv": {
+        "columns": 4,
+        "rows_excluding_header": 536819,
+        "sha256": "1b3c43e8e51d65a15f545f5bbcad4cea94702bba896dffd1e38aee0d270761cb",
+        "size_bytes": 93137096
+      },
+      "lab_test.csv": {
+        "columns": 775,
+        "rows_excluding_header": 530450,
+        "sha256": "b3795af416fab9aa823f23170a5c6d8380382e7b96e0a8dc64090d68dbf1c0f2",
+        "size_bytes": 873330189
+      },
+      "patient_info.csv": {
+        "columns": 3,
+        "rows_excluding_header": 38509,
+        "sha256": "6354ff667b40de286746f9d4668be3a864905f2339fcdc61361fb6d1518ead14",
+        "size_bytes": 2772711
+      },
+      "socioeconomic_index.csv": {
+        "columns": 8,
+        "rows_excluding_header": 530450,
+        "sha256": "9cff672ca440df137dfe3812ae4e6f90b6d1a86e007d8e5ed77b7a62395188be",
+        "size_bytes": 97092061
+      },
+      "visit_record.csv": {
+        "columns": 9,
+        "rows_excluding_header": 162008,
+        "sha256": "a9e2cf41e8f8d08521fc9669ca2a26d248b078e22e261396f49a322fb263119b",
+        "size_bytes": 53492874
+      }
+    },
+    "release_files_directory": ".",
+    "row_counts_reconciled": true
+  },
+  "release_exclusions": {
+    "address": true,
+    "city": true,
+    "date_of_birth": true,
+    "province": true,
+    "raw_department_names": true,
+    "source_patient_identifier": true,
+    "source_socioeconomic_year": true
+  },
+  "release_version": "1.0.0",
+  "report_contains_row_level_data": false,
+  "scan_scope": {
+    "kind": "complete_source",
+    "max_rows_requested": null,
+    "rows_scanned": 530450,
+    "warning": null
+  },
+  "socioeconomic": {
+    "all_five_values_missing_rows": 196916,
+    "direct_geography_released": false,
+    "imputation_performed": false,
+    "internal_alignment_check": "source year equals unshifted examination year",
+    "internally_validated_region_year_keys": 636,
+    "missing_rows_by_variable": {
+      "人均地区生产总值(元)": 196916,
+      "医生数(人)": 196916,
+      "医院、卫生院床位数(张)": 196916,
+      "医院、卫生院数(个)": 196916,
+      "职工平均工资(元)": 317854
+    },
+    "original_year_mismatch_rows": 0,
+    "rows_with_missing_internal_region_or_year": 149,
+    "rows_with_missing_internal_region_or_year_but_nonmissing_values": 0
+  },
+  "source_integrity": {
+    "source_column_count": 939,
+    "source_file_name": "processed_data.csv",
+    "source_opened_read_only": true,
+    "source_sha256": "82d93cf0e9410544d6eba75b818464dfc4cd9dceba53d4b430a86a74b9db8f87",
+    "source_sha256_rechecked_after_write": true,
+    "source_size_bytes": 1040950098
+  },
+  "table_grain": {
+    "age_definition": "age at earliest admission in the scanned source",
+    "age_outside_0_to_120": 0,
+    "encounter_id_collisions": 0,
+    "maximum_age_at_index": 96,
+    "minimum_age_at_index": 19,
+    "patient_info_rows": 38509,
+    "unique_encounter_ids_expected": 162008,
+    "unique_patient_ids_expected": 38509,
+    "visit_record_rows": 162008
+  }
+}

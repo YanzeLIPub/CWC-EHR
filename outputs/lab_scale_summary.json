@@ -1,0 +1,12 @@
+{
+  "release_version": "1.0.0",
+  "laboratory_rows": 530450,
+  "laboratory_fields": 771,
+  "finite_cells": 24899677,
+  "fields_with_negative_values": 305,
+  "fields_with_values_outside_zero_one": 466,
+  "fields_entirely_within_zero_one": 305,
+  "fields_matching_complete_extract_zero_mean_unit_sd_at_1e_minus6": 0,
+  "scope": "Moments and ranges describe the released observations. They do not identify an original transformation fitted on another population or reference interval.",
+  "provenance": "All field counts reconciled with outputs/lab_variable_qc.csv. Original clinical-scale measurements were not supplied."
+}

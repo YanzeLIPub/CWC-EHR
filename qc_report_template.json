@@ -1,0 +1,84 @@
+{
+  "template_version": "1.0",
+  "scope": "R2/R4 released-data contradiction checks only",
+  "required_release_gate": {
+    "cohort_provenance": {
+      "upstream_rule": "Adults aged at least 18 years receiving cancer care with at least one of coronary heart disease, hypertension, heart failure, arrhythmia, valvular heart disease, cardiomyopathy, congenital heart disease, or vascular disease; OR across the eight cardiovascular categories and AND with the adult oncology sampling frame. Other coexisting diseases were permitted. Heart failure was a separate qualifying condition.",
+      "author_confirmed_upstream_pass_count": 38509,
+      "cohort_reselected_from_four_released_diagnosis_text_fields": false,
+      "supplied_38509_patient_cohort_retained_without_reclassification": true,
+      "upstream_historical_diagnosis_selection_records_in_current_extract": false
+    },
+    "source_integrity": {
+      "source_opened_read_only": true,
+      "source_sha256_locked_before_build": "AUTHOR_TO_CONFIRM",
+      "source_archive_modified": false
+    },
+    "patient_pseudonymization": {
+      "method": "HMAC-SHA-256 with domain separation",
+      "same_patient_key_used_in_all_tables": true,
+      "secret_in_release_package": false,
+      "mapping_table_in_release_package": false,
+      "collisions": 0,
+      "sequential_identifier_pattern_present": false
+    },
+    "date_shifting": {
+      "minimum_offset_days_at_least": -30,
+      "maximum_offset_days_at_most": 30,
+      "same_offset_used_for_each_patient_across_tables": true,
+      "encounter_interval_mismatches": 0,
+      "discharge_before_admission_after_shift": 0
+    },
+    "patient_info": {
+      "rows_equal_unique_patients": true,
+      "duplicate_patient_pseudo_ids": 0,
+      "age_rule": "age at earliest source admission",
+      "date_of_birth_released": false,
+      "address_or_geographic_code_released": false
+    },
+    "visit_record": {
+      "grain": "one row per source hospital encounter",
+      "duplicate_encounter_ids": 0,
+      "raw_department_or_ward_names_released": false
+    },
+    "diagnosis": {
+      "diagnosis_source_column_present": true,
+      "technical_duplicate_rows": 0,
+      "icd10_mapping_performed": false,
+      "invented_cardiovascular_diagnoses": false
+    },
+    "laboratory": {
+      "non_lab_columns_in_value_block": 0,
+      "entirely_empty_value_columns": 0,
+      "unit_assignment_performed": false,
+      "missing_value_imputation_performed": false,
+      "observed_patient_coverage_reported": true,
+      "patients_with_at_least_one_observed_value": "FROM_FINAL_QC",
+      "cohort_patients": "FROM_FINAL_QC",
+      "released_unit": "Standardized (dimensionless)",
+      "upstream_transformation_status": "Standardization confirmed by the data providers; conversion rules and parameters not publicly disclosed",
+      "release_transformation": "Standardized source values copied unchanged"
+    },
+    "socioeconomic": {
+      "source_year_checked_against_unshifted_examination_year": true,
+      "source_year_mismatch_rows": 0,
+      "address_province_city_or_source_year_released": false,
+      "genuine_missing_values_preserved": true,
+      "missingness_numerator_and_denominator_reported": true,
+      "imputation_performed": false
+    },
+    "manifest": {
+      "row_counts_reconciled": true,
+      "column_counts_recorded": true,
+      "file_sha256_values_recorded": true,
+      "manuscript_values_recomputed_from_final_release": "AUTHOR_TO_CONFIRM"
+    },
+    "free_text_direct_identifier_scan": {
+      "exact_source_identifier_matches": 0,
+      "exact_source_address_matches": 0,
+      "values_with_mobile_phone_pattern": 0,
+      "values_with_national_id_pattern": 0,
+      "values_with_direct_identifier_labels": 0
+    }
+  }
+}

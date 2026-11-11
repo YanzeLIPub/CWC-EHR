@@ -1,0 +1,79 @@
+{
+  "audit_generated_utc": "2026-11-10T01:24:06.086515+00:00",
+  "release_version": "1.0.0",
+  "patient_count": 38509,
+  "scope": "Aggregate-only equivalence-class analysis of selected structured quasi-identifiers. No patient pseudonyms, attribute values, or row-level records are written to this report.",
+  "direct_identifier_scan_results_from_release_qc": {
+    "exact_source_address_matches": 0,
+    "exact_source_identifier_matches": 0,
+    "unique_diagnosis_or_procedure_values_scanned": 4401,
+    "values_with_direct_identifier_labels": 0,
+    "values_with_mobile_phone_pattern": 0,
+    "values_with_national_id_pattern": 0
+  },
+  "quasi_identifier_equivalence_classes": [
+    {
+      "variables": [
+        "sex_source_code",
+        "age_at_first_admission_years"
+      ],
+      "equivalence_class_count": 146,
+      "minimum_class_size": 1,
+      "maximum_class_size": 983,
+      "singleton_patient_count": 7,
+      "singleton_patient_percent": 0.0182,
+      "patients_in_classes_smaller_than_5": 57,
+      "patients_in_classes_smaller_than_5_percent": 0.148
+    },
+    {
+      "variables": [
+        "sex_source_code",
+        "age_at_first_admission_years",
+        "first_admission_date_shifted"
+      ],
+      "equivalence_class_count": 31762,
+      "minimum_class_size": 1,
+      "maximum_class_size": 6,
+      "singleton_patient_count": 26014,
+      "singleton_patient_percent": 67.553,
+      "patients_in_classes_smaller_than_5": 38458,
+      "patients_in_classes_smaller_than_5_percent": 99.8676
+    },
+    {
+      "variables": [
+        "sex_source_code",
+        "age_at_first_admission_years",
+        "first_admission_date_shifted",
+        "first_admission_department_code",
+        "first_payer_source_code"
+      ],
+      "equivalence_class_count": 38329,
+      "minimum_class_size": 1,
+      "maximum_class_size": 3,
+      "singleton_patient_count": 38152,
+      "singleton_patient_percent": 99.0729,
+      "patients_in_classes_smaller_than_5": 38509,
+      "patients_in_classes_smaller_than_5_percent": 100.0
+    },
+    {
+      "variables": [
+        "sex_source_code",
+        "age_at_first_admission_years",
+        "first_admission_date_shifted",
+        "first_admission_department_code",
+        "first_payer_source_code",
+        "encounter_count",
+        "last_discharge_date_shifted"
+      ],
+      "equivalence_class_count": 38508,
+      "minimum_class_size": 1,
+      "maximum_class_size": 2,
+      "singleton_patient_count": 38507,
+      "singleton_patient_percent": 99.9948,
+      "patients_in_classes_smaller_than_5": 38509,
+      "patients_in_classes_smaller_than_5_percent": 100.0
+    }
+  ],
+  "interpretation": "Residual re-identification risk is present because longitudinal shifted dates, age, sex, coded care attributes, payer information, diagnoses, procedures, laboratory trajectories, and area-level socioeconomic measures can form distinctive combinations. Patient-specific date shifting and removal of direct identifiers reduce risk but do not make the release anonymous. Controlled access, the project-specific Data Use Agreement, secure analysis, and prohibition of linkage or re-identification remain required.",
+  "limitations": "This structured quasi-identifier analysis does not model external auxiliary datasets and does not enumerate high-dimensional diagnosis, procedure-text, laboratory, or socioeconomic combinations. It therefore supports governance review rather than a claim of anonymity."
+}

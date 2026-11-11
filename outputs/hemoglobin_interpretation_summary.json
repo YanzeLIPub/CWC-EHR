@@ -1,0 +1,20 @@
+{
+  "release_version": "1.0.0",
+  "analyte": "Hemoglobin",
+  "released_unit": "Standardized (dimensionless)",
+  "finite_observations": 360268,
+  "negative_observations": 184830,
+  "negative_percent": 51.3,
+  "internal_cross_variable_check_records": 360263,
+  "interpretation": "Negative standardized hemoglobin scores likely correspond to original measurements below the relevant reference lower limit",
+  "support": "Sex-specific value spacing and an internal relationship among hemoglobin, hematocrit and mean corpuscular hemoglobin concentration",
+  "evidence_status": "Data-supported inference, not a confirmed clinical conversion",
+  "disclosure": "Aggregate evidence is public; validation parameters are disclosed confidentially to the editor; no reconstruction code is public",
+  "internal_check_agreement_within_1_g_per_l_n": 359982,
+  "internal_check_agreement_within_1_g_per_l_percent": 99.92200142673546,
+  "internal_check_median_absolute_difference_g_per_l": 0.092,
+  "star_prefixed_male_observations": 78304,
+  "star_prefixed_female_observations": 51689,
+  "star_prefixed_grid_consistency": "All observations conformed to sex-specific discrete spacing within numerical tolerance",
+  "clinical_use": "Released scores must not be interpreted directly as clinical concentrations or as confirmed abnormality classifications"
+}

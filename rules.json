@@ -1,0 +1,106 @@
+{
+  "upstream_cardiovascular_eligibility": {
+    "basis": "Clinical eligibility criteria confirmed by the cohort builders",
+    "sampling_frame": "Adults aged at least 18 years receiving cancer care at the study hospital",
+    "category_labels_english": [
+      "coronary heart disease",
+      "hypertension",
+      "heart failure",
+      "arrhythmia",
+      "valvular heart disease",
+      "cardiomyopathy",
+      "congenital heart disease",
+      "vascular disease"
+    ],
+    "operator_across_categories": "OR",
+    "operator_with_sampling_frame": "AND",
+    "eligible_patients_in_supplied_extract": 38509,
+    "minimum_age_years": 18,
+    "category_labels_chinese": [
+      "冠心病",
+      "高血压",
+      "心力衰竭",
+      "心律失常",
+      "心脏瓣膜病",
+      "心肌病",
+      "先天性心脏病",
+      "血管疾病"
+    ],
+    "other_coexisting_diseases_permitted": true,
+    "heart_failure_is_separate_qualifying_condition": true,
+    "operational_dictionary": "outputs/eligibility_rule_dictionary.csv",
+    "source_query_recovered": false,
+    "upstream_icd10_use": "Not established from available material",
+    "upstream_synonym_field_time_and_occurrence_specification": "Not available; do not substitute descriptive-analysis patterns"
+  },
+  "selected_laboratory_label_variants": {
+    "High-sensitivity troponin I": [
+      "高敏肌钙蛋白I"
+    ],
+    "Hemoglobin": [
+      "★血红蛋白",
+      "血红蛋白"
+    ],
+    "Total cholesterol": [
+      "*总胆固醇",
+      "★总胆固醇",
+      "总胆固醇"
+    ],
+    "LDL cholesterol": [
+      "*低密度脂蛋白胆固醇",
+      "★低密度脂蛋白胆固醇",
+      "低密度脂蛋白胆固醇"
+    ],
+    "HDL cholesterol": [
+      "*高密度脂蛋白胆固醇",
+      "★高密度脂蛋白胆固醇",
+      "高密度脂蛋白胆固醇"
+    ]
+  },
+  "legacy_round2_descriptive_text_rules": {
+    "scope": "Round-two descriptive analyses of the four extract diagnosis fields and the primary procedure field. These rules were not the upstream eligibility query.",
+    "cancer_diagnosis_patterns": {
+      "Lung": "肺(?:恶性肿瘤|癌|鳞癌|腺癌)|小细胞肺癌",
+      "Esophageal": "食管(?:恶性肿瘤|癌|鳞癌)",
+      "Gastric": "胃(?:恶性肿瘤|癌|腺癌)",
+      "Breast": "乳腺(?:恶性肿瘤|癌|腺癌)",
+      "Liver": "肝(?:恶性肿瘤|癌|细胞癌)|肝内胆管癌",
+      "Colorectal": "结肠(?:恶性肿瘤|癌|腺癌)|直肠(?:恶性肿瘤|癌|腺癌)|结直肠癌",
+      "Cervical": "子宫颈(?:恶性肿瘤|癌|鳞癌)",
+      "Endometrial": "子宫内膜(?:恶性肿瘤|癌|腺癌)",
+      "Ovarian": "卵巢(?:恶性肿瘤|癌)",
+      "Pancreatic": "胰腺(?:恶性肿瘤|癌)",
+      "Prostate": "前列腺(?:恶性肿瘤|癌|腺癌)",
+      "Lymphoma": "淋巴瘤",
+      "Renal": "肾(?:恶性肿瘤|癌|细胞癌)",
+      "Bladder": "膀胱(?:恶性肿瘤|癌)",
+      "Head and neck": "鼻咽癌|喉癌|口腔癌|甲状腺癌"
+    },
+    "procedure_patterns": {
+      "Chemotherapy": "化疗|化学治疗|静脉注射化疗药物",
+      "Radiotherapy": "放疗|放射治疗|调强放射",
+      "Targeted therapy": "靶向",
+      "Immunotherapy": "免疫治疗|抗肿瘤免疫",
+      "Surgical resection": "切除术|根治术|手术治疗",
+      "Biopsy/puncture": "活检|穿刺",
+      "Interventional therapy": "介入|栓塞|消融",
+      "Endoscopic/laparoscopic procedure": "内镜|腹腔镜|胸腔镜"
+    },
+    "exploratory_cardiovascular_patterns": {
+      "Hypertension": "高血压",
+      "Coronary heart disease/ischemic heart disease": "冠心病|冠状动脉粥样硬化性心脏病|心肌梗死|心绞痛",
+      "Heart failure": "心力衰竭|心衰",
+      "Arrhythmia": "心律失常|心房颤动|房颤|心房扑动|房扑|心动过缓|心动过速|早搏",
+      "Valvular heart disease": "心脏瓣膜病|二尖瓣(?:狭窄|关闭不全)|主动脉瓣(?:狭窄|关闭不全)|三尖瓣(?:狭窄|关闭不全)",
+      "Cardiomyopathy": "心肌病",
+      "Congenital heart disease": "先天性心脏病|房间隔缺损|室间隔缺损|动脉导管未闭",
+      "Vascular disease": "外周动脉疾病|外周血管疾病|主动脉瘤|主动脉夹层|深静脉血栓|肺栓塞"
+    }
+  },
+  "laboratory_value_representation": {
+    "released_unit": "Standardized (dimensionless)",
+    "standardization_stage": "Before extraction, confirmed by the data providers",
+    "release_processing": "Standardized source values copied unchanged",
+    "conversion_disclosure": "Rules and parameters not publicly disclosed to limit reconstruction of original measurements"
+  }
+}
